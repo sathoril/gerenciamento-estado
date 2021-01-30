@@ -15,7 +15,7 @@ import { NavegacaoModule } from './navegacao/navegacao.module';
 
 import { AppRoutingModule } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
-import { TodoModule } from './demos/todo-list/todo.module';
+import { TodoModule } from './todo-list/todo.module';
 
 @NgModule({
   declarations: [
