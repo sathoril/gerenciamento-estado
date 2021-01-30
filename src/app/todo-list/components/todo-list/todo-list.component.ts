@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import { EventEmitter } from 'events';
 import { Task } from "../../task";
 
 @Component({
@@ -10,4 +11,7 @@ export class ToDoListComponent {
 
   @Input()
   list: Task[];
+
+  @Output()
+  toggleItem = new EventEmitter();
 }
