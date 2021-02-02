@@ -1,6 +1,14 @@
 <div class="container main-container">
 
-    <div class="row text-center">
+    <form [formGroup]="formulario">
+        <div class="mb-3">
+            <label class="form-label" for="novaTarefa">Adicionar nova tarefa:</label>
+            <input class="form-control" type="text" formControlName="tarefa">
+        </div>
+        <button class="btn btn-primary" (click)="cadastrarNovaTarefa()">Adicionar nova tarefa</button>
+    </form>
+    <div class="row text-center mt-5">
+        
         <tasks class="col-md-4"></tasks>
         <tasks-iniciadas class="col-md-4"></tasks-iniciadas>
         <tasks-finalizadas class="col-md-4"></tasks-finalizadas>

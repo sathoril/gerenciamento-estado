@@ -14,7 +14,7 @@ export class TasksFinalizadasComponent implements OnInit {
 
   finalizados$: Observable<any[]>;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private tasksService: TasksService) { }
 
   ngOnInit() {
     this.finalizados$ = this.store.getTodoList()
@@ -22,4 +22,9 @@ export class TasksFinalizadasComponent implements OnInit {
         map(todolist => todolist.filter(task => !task.iniciado && task.finalizado))
       );      
   }
+
+  onToggle(event) {
+    this.tasksService.toggle(event);
+  }
+
 }

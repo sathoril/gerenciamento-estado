@@ -17,4 +17,35 @@ export class TasksService {
     .get<Task[]>('http://localhost:3000/todolist')
     .pipe(
       tap(next => this.store.set('todolist', next)));
+
+
+  toggle(event: any) {
+    this.http
+      .put(`http://localhost:3000/todolist/${event.task.id}`, event.task)
+      .subscribe(() => { 
+        const value = this.store.value.todolist;
+        const todolistAtualizada = value.map((task: Task) => {
+          if (task.id === event.task.id) {
+            return { ...task }
+          } else {
+            return task;
+          }
+        });
+
+        this.store.set('todolist', todolistAtualizada);
+      })      
+  }
+
+  criar(novaTarefa: Task) {
+    this.http
+      .post('http://localhost:3000/todolist', novaTarefa)
+      .subscribe((novaTarefa) => {
+        debugger;
+        this.store.value.todolist.push(novaTarefa as Task);
+        const todolistAtualizada = this.store.value.todolist
+        
+        this.store.set('todolist', todolistAtualizada);
+      })
+  }
+
 }
